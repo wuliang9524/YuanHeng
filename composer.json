@@ -1,0 +1,17 @@
+{
+    "name": "logan/yuanheng",
+    "description": "元亨平台接口 SDK",
+    "type": "lib",
+    "autoload": {
+        "psr-4": {
+            "Logan\\Yuanheng\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "long",
+            "email": "wuliang9524@gmail.com"
+        }
+    ],
+    "require": {}
+}
