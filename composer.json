@@ -7,11 +7,21 @@
             "Logan\\Yuanheng\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Logan\\Yuanheng\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "long",
             "email": "wuliang9524@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
