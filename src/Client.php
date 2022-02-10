@@ -294,6 +294,31 @@ class Client
     }
 
     /**
+     * 查询项目工人信息
+     *
+     * @param string $code  项目编号
+     * @param [type] $idCode    工人身份编号
+     * @return void
+     * @author LONG <1121116451@qq.com>
+     * @version version
+     * @date 2022-02-10
+     */
+    public function queryProjectWorker(string $code, string $idCode)
+    {
+        $url = $this->host . "/API/AppInterface/GetProjectEmployee";
+
+        $url .= "?ProjectID={$code}";
+        $url .= "&Token={$this->token}";
+        $url .= "&IDcardNum={$code}";
+
+        $response = $this->httpClient->request('POST', $url)
+            ->getBody()
+            ->getContents();
+
+        return json_decode($response, true);
+    }
+
+    /**
      * 工人进场
      *
      * @param [type] $proUid

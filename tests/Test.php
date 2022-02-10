@@ -31,23 +31,23 @@ class Test extends TestCase
         $amount     = "19000000";
         $contractId = '';
 
-        // $instance = new Client($domain, $domainIntranet, $token);
-        // $res = $instance->addGroup(
-        //     $name,
-        //     $proUid,
-        //     $companyLicense,
-        //     $headName,
-        //     $headPhone,
-        //     $headIdCard,
-        //     $emName,
-        //     $emPhone,
-        //     $proContent,
-        //     $amount,
-        //     $contractId
-        // );
+        $instance = new Client($domain, $domainIntranet, $token);
+        $res = $instance->addGroup(
+            $name,
+            $proUid,
+            $companyLicense,
+            $headName,
+            $headPhone,
+            $headIdCard,
+            $emName,
+            $emPhone,
+            $proContent,
+            $amount,
+            $contractId
+        );
 
-        // $this->assertArrayHasKey('Success', $res);
-        // $this->assertArrayHasKey('ErrMsg', $res);
+        $this->assertArrayHasKey('Success', $res);
+        $this->assertArrayHasKey('ErrMsg', $res);
     }
 
     public function testAddWorkerInfoRequest()
@@ -56,11 +56,11 @@ class Test extends TestCase
 
     public function testUploadFileRequest()
     {
-        // $path = 'http://file.global8.cn/UserApp/IdCardPic/61ea12927c167.png';
+        $path = 'http://file.global8.cn/UserApp/IdCardPic/61ea12927c167.png';
         $path = '/mnt/c/Users/ASUS/Pictures/61e13e4a1ef86.png';
 
-        // $instance = new Client($this->domain, $this->domainIntranet, $this->token);
-        // $res = $instance->uploadFile($path);
+        $instance = new Client($this->domain, $this->domainIntranet, $this->token);
+        $res = $instance->uploadFile($path);
     }
 
     public function testDownloadFileRequest()
@@ -80,8 +80,8 @@ class Test extends TestCase
     {
         $docId = 5371507;
 
-        // $instance = new Client($this->domain, $this->domainIntranet, $this->token);
-        // $res = $instance->getBase64($docId);
+        $instance = new Client($this->domain, $this->domainIntranet, $this->token);
+        $res = $instance->getBase64($docId);
     }
 
     public function testGetDevicesRequest()
