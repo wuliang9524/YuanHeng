@@ -8,14 +8,14 @@ class DeviceTest extends TestCase
 {
     protected $domain         = 'http://ccsmz.fsyzt.cn:8091';
     protected $domainIntranet = 'http://192.168.101.2:8095';
-    protected $token          = 'bbc0e8f84505098ececf97de77698bd4';
+    protected $token          = '';
 
     public function testAddDeviceWorker(): void
     {
         // config
         $domain = 'http://ccsmz.fsyzt.cn:8091';
         $host = 'http://183.239.33.103:4250';
-        $token = 'bbc0e8f84505098ececf97de77698bd4';
+        $token = '';
 
         // params
         $wanIp   = '10.0.0.0';

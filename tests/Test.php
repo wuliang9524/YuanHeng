@@ -9,14 +9,14 @@ class Test extends TestCase
 {
     protected $domain         = 'http://ccsmz.fsyzt.cn:8091';
     protected $domainIntranet = 'http://192.168.101.2:8095';
-    protected $token          = 'bbc0e8f84505098ececf97de77698bd4';
+    protected $token          = '';
 
     public function testAddGroupRequest(): void
     {
         // config
         $domain = 'http://ccsmz.fsyzt.cn:8091';
         $domainIntranet = 'http://192.168.101.2:8095';
-        $token = 'bbc0e8f84505098ececf97de77698bd4';
+        $token = '';
 
         // params
         $name       = "水电安装专业分包";
