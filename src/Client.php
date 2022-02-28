@@ -93,11 +93,11 @@ class Client
     }
 
     /**
-     * 添加班组
+     * 
      *
-     * @param string $name  班组名称
-     * @param string $proUid    项目唯一标识码
-     * @param string $companyLicense    对应的五方公司营业执照编号
+     * @param string $name      
+     * @param string $proUid    
+     * @param string $companyLicense    
      * @param [type] $headName  
      * @param [type] $headPhone
      * @param [type] $headIdCard
@@ -111,18 +111,38 @@ class Client
      * @version version
      * @date 2022-01-20
      */
+
+    /**
+     * 添加班组
+     *
+     * @param string $name             班组名称
+     * @param string $proUid           项目唯一标识码
+     * @param string $companyLicense   对应的五方公司营业执照编号
+     * @param string|null $headName    班组长姓名
+     * @param string|null $headPhone   班组长联系方式
+     * @param string|null $headIdCard  班组长身份证号
+     * @param string|null $emName      紧急联系人
+     * @param string|null $emPhone     紧急联系人电话
+     * @param string|null $proContent  工程承包内容
+     * @param int|null $amount         承包合同金额
+     * @param string|null $contractId  合同文件在文件系统上的ID
+     * @return void
+     * @author LONG <1121116451@qq.com>
+     * @version version
+     * @date 2022-02-28
+     */
     public function addGroup(
-        $name,
-        $proUid,
-        $companyLicense,
-        $headName,
-        $headPhone,
-        $headIdCard,
-        $emName,
-        $emPhone,
-        $proContent,
-        $amount,
-        $contractId
+        string $name,
+        string $proUid,
+        string $companyLicense,
+        ?string $headName   = null,
+        ?string $headPhone  = null,
+        ?string $headIdCard = null,
+        ?string $emName     = null,
+        ?string $emPhone    = null,
+        ?string $proContent = null,
+        ?int    $amount     = null,
+        ?string $contractId = null
     ) {
         $url = $this->host . '/API/Project/AddProjectTeam';
 
@@ -153,44 +173,44 @@ class Client
     /**
      * 添加/编辑 工人信息
      *
-     * @param [type] $idCard
-     * @param [type] $name
-     * @param [type] $sex
-     * @param [type] $nation
-     * @param [type] $birthDate
-     * @param [type] $address
-     * @param [type] $census
-     * @param [type] $phone
-     * @param [type] $emName
-     * @param [type] $emPhone
-     * @param [type] $cultrue
-     * @param [type] $health
-     * @param [type] $workerType
-     * @param [type] $companyName
-     * @param [type] $companyLicense
-     * @param string $groupName
+     * @param string $idCard            身份证号
+     * @param string $name              姓名
+     * @param int $sex                  性别
+     * @param string $nation            民族
+     * @param string $birthDate         出生日期(只须上传日期)
+     * @param string $address           住址
+     * @param string $census            户籍
+     * @param string $phone             电话
+     * @param string $emName            紧急联系人
+     * @param string $emPhone           紧急联系人电话
+     * @param int $cultrue              文化程度
+     * @param int $health               健康状况
+     * @param int $workerType           工种
+     * @param string $companyName       公司名称
+     * @param string $companyLicense    社会统一信用代码
+     * @param string|null $groupName    班组名称
      * @return void
      * @author LONG <1121116451@qq.com>
      * @version version
-     * @date 2022-01-20
+     * @date 2022-02-28
      */
     public function addWorkerInfo(
-        $idCard,
-        $name,
-        $sex,
-        $nation,
-        $birthDate,
-        $address,
-        $census,
-        $phone,
-        $emName,
-        $emPhone,
-        $cultrue,
-        $health,
-        $workerType,
-        $companyName,
-        $companyLicense,
-        $groupName = ''
+        string $idCard,
+        string $name,
+        int $sex,
+        string $nation,
+        string $birthDate,
+        string $address,
+        string $census,
+        string $phone,
+        string $emName,
+        string $emPhone,
+        int $cultrue,
+        int $health,
+        int $workerType,
+        string $companyName,
+        string $companyLicense,
+        ?string $groupName = null
     ) {
         $url = $this->host . '/API/People/AddAttendancePeople';
 
@@ -606,7 +626,7 @@ class Client
         string $dateTime,
         int $type,
         bool $isIn,
-        string $attendaceImg
+        ?string $attendaceImg
     ) {
         $url = $this->host . '/API/Attendance/DeviceUploadAttendanceItem';
 
