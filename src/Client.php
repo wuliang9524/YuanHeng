@@ -248,6 +248,102 @@ class Client
     }
 
     /**
+     * 补充工人信息
+     * 旧 编辑人员信息接口
+     *
+     * @param string $idCard            身份证号
+     * @param string $name              姓名
+     * @param int $sex                  性别
+     * @param string $nation            民族
+     * @param string $birthDate         出生日期(只须上传日期)
+     * @param string $address           住址
+     * @param string $census            户籍
+     * @param string $phone             电话
+     * @param string $emName            紧急联系人
+     * @param string $emPhone           紧急联系人电话
+     * @param int $cultrue              文化程度
+     * @param int $health               健康状况
+     * @param int $issue                签发机关
+     * @param int $faceId               人脸照片文件编号
+     * @param int $cardFrontId          身份证正面文件编号
+     * @param int $cardBackId           身份证反面文件编号
+     * @param int $startDate            身份证有效期(开始日期) Y-m-d
+     * @param int $endDate              身份证有效期(结束日期) Y-m-d 或 "长期"
+     * @param int $workerType           工种
+     * @param string $companyName       公司名称
+     * @param string $companyLicense    社会统一信用代码
+     * @param string|null $groupName    班组名称
+     * @return void
+     * @author LONG <1121116451@qq.com>
+     * @version version
+     * @date 2022-02-28
+     */
+    public function addWorkerInfoOld(
+        string $idCard,
+        string $name,
+        int $sex,
+        string $nation,
+        string $birthDate,
+        string $address,
+        string $census,
+        string $phone,
+        string $emName,
+        string $emPhone,
+        int $cultrue,
+        int $health,
+        string $issue,
+        int $faceId,
+        int $cardFrontId,
+        int $cardBackId,
+        string $startDate,
+        string $endDate,
+        int $workerType,
+        string $companyName,
+        string $companyLicense,
+        ?string $groupName = null
+    ) {
+        $url = $this->host . '/API/People/AddAttendancePeople_Old';
+
+        $params = [
+            'IdNum'               => $idCard,           // 身份证号
+            'Name'                => $name,             // 姓名
+            'Sex'                 => $sex,              // 性别
+            'Nation'              => $nation,           // 民族
+            'Birthday'            => $birthDate,        // 出生日期(只须上传日期)
+            'Address'             => $address,          // 住址
+            'Native'              => $census,           // 户籍
+            'Phone'               => $phone,            // 电话
+            'EmerPeople'          => $emName,           // 紧急联系人
+            'EmerPhone'           => $emPhone,          // 紧急联系人电话
+            'Culture'             => $cultrue,          // 文化程度
+            'Health'              => $health,           // 健康状况
+            'QianFaJiGuan'        => $issue,            //签发机关
+            'DocumentID'          => $faceId,           // 人脸照片文件编号
+            'Photo'               => $cardFrontId,      // 身份证正面文件编号
+            'IDcardNumPicFanMian' => $cardBackId,       // 身份证反面文件编号
+            'QiXianQiShi'         => $startDate,        // 身份证有效期(开始日期)
+            'QiXianShiXiao'       => $endDate,          // 身份证有效期(结束日期)
+            'WorkerType'          => $workerType,       // 工种
+            'CompanyName'         => $companyName,      // 公司名称
+            'CompanyNumber'       => $companyLicense,   // 社会统一信用代码
+            'TeamName'            => $groupName,        // （非必填）班组名称
+        ];
+
+        $req = [
+            'Token'    => $this->token,
+            'PostJson' => json_encode($params, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+        ];
+
+        $response = $this->httpClient->request('POST', $url, [
+            'form_params' => $req
+        ])
+            ->getBody()
+            ->getContents();
+
+        return json_decode($response, true);
+    }
+
+    /**
      * 更新工人信息头像
      * 住建平台的人员信息详情头像
      *
