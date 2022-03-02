@@ -582,12 +582,12 @@ class Client
      *
      * @param int $docId    文件 ID , 上传文件时返回
      * @param string $path  下载到的文件夹路径,文件夹路径需要保证存在
-     * @return string|bool  返回文件路径 | false
+     * @return string|null  返回文件路径 | null
      * @author LONG <1121116451@qq.com>
      * @version version
      * @date 2022-01-21
      */
-    public function downloadFile(int $docId, string $path): bool
+    public function downloadFile(int $docId, string $path): ?string
     {
         $path = rtrim($path, '/') . '/';
 
@@ -621,7 +621,7 @@ class Client
         if ($res) {
             return $name;
         } else {
-            return false;
+            return null;
         }
     }
 
